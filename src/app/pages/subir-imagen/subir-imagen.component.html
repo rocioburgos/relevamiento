@@ -1,0 +1,28 @@
+<app-navbar [titulo]='titulo'></app-navbar>
+<ion-content>
+  <ion-button (click)='tomarFoto()'>
+    Tomar foto <ion-icon name="camera-sharp"></ion-icon>
+  </ion-button>
+
+  <!--MOSTRAR SPINNER -->
+
+  <p *ngIf='mostrarError'>Error al subir la imagen. Reintente.</p>
+
+  <ion-card>
+    <ion-card-content *ngFor='let img of paths'>
+
+      <img src="{{img}}" width="100px">
+    </ion-card-content>
+  </ion-card>
+  <!--HABILITAR CUANDO ESTE OK LA IMAGEN-->
+  <div *ngIf='habilitar'>
+    <ion-button (click)='subirFotos()'>
+      Subir foto<ion-icon name="cloud-upload-outline"></ion-icon>
+    </ion-button>
+  </div>
+</ion-content>
+
+<!-- Spinner -->
+<ngx-spinner template="<img src='../../../assets/loading-buffering.gif' height='125'/>">
+  <p style="color: white"> </p>
+</ngx-spinner>

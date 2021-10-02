@@ -1,0 +1,32 @@
+ 
+<ion-header>
+  <ion-toolbar color="primary">
+    <ion-title> {{titulo}} </ion-title>
+    <ion-button color='danger'(click)='cerrarSesion()'><ion-icon name="log-out-sharp"></ion-icon></ion-button>
+ 
+    <ion-buttons  slot="start">
+      <ion-back-button style="font-family: Arial, Helvetica, sans-serif;"
+        defaultHref="/" 
+        color="danger"
+      >
+      </ion-back-button>
+    </ion-buttons> 
+  </ion-toolbar>
+</ion-header>  
+<ion-content> 
+ 
+    <ion-card *ngFor="let item of contact; let index=index">
+      <ion-card-subtitle> {{item.usuario}}</ion-card-subtitle>
+      <ion-card-content *ngFor='let img of item.imagenes'>
+  
+        <img src="{{img}}" width="100px"> 
+      </ion-card-content>
+      <ion-card-header>
+    
+        <ion-card-subtitle>  {{item.fecha}} - {{item.hora}} </ion-card-subtitle> 
+      </ion-card-header>
+      <ion-button size="small"><ion-icon name="thumbs-up-sharp"></ion-icon></ion-button>
+      <ion-button size="small"><ion-icon name="thumbs-down-sharp"></ion-icon></ion-button>
+    </ion-card>
+ 
+</ion-content>

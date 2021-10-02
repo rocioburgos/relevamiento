@@ -1,0 +1,28 @@
+<app-navbar [titulo]='titulo'></app-navbar>
+<ion-content>
+<ion-button (click)='tomarFoto()'>Subir foto fea<ion-icon name="camera-sharp"></ion-icon></ion-button>
+<div *ngIf='path!= ""'>
+   <img src="{{path}}"  style="max-width: 100%">
+</div>
+<ion-button (click)='mostrarResultados()'>Resultados</ion-button>
+
+<div *ngFor="let item of contact; let index=index">
+  <ion-card>
+    <ion-card-subtitle> {{item.usuario}}</ion-card-subtitle>
+    <ion-card-content *ngFor='let img of item.imagenes'>
+
+      <img src="{{img}}" width="100px"> 
+    </ion-card-content>
+    <ion-card-header>
+  
+      <ion-card-subtitle>  {{item.fecha}} - {{item.hora}} </ion-card-subtitle>  
+    </ion-card-header>
+    <ion-button size="small" (click)='like("like", item.doc_id)'><ion-icon name="thumbs-up-outline"></ion-icon></ion-button>
+    <ion-button size="small" (click)='like("like", item.doc_id)'><ion-icon name="thumbs-up-sharp"></ion-icon></ion-button>
+    
+    <ion-button size="small" (click)='like("dislike", item.doc_id)'><ion-icon name="thumbs-down-outline"></ion-icon></ion-button>
+    <ion-button size="small" (click)='like("dislike", item.doc_id)'><ion-icon name="thumbs-down-sharp"></ion-icon></ion-button>
+  
+  </ion-card>
+</div>
+</ion-content>
